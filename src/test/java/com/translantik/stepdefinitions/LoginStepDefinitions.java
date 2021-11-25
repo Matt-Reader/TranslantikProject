@@ -2,6 +2,7 @@ package com.translantik.stepdefinitions;
 
 import com.translantik.pages.DashboardPage;
 import com.translantik.pages.LoginPage;
+import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
 import com.translantik.utilities.UserGenerator;
@@ -23,11 +24,13 @@ public class LoginStepDefinitions {
         loginPage.login(UserGenerator.username, UserGenerator.password);
 
         if (userType.equals("driver")){
+            BrowserUtils.waitForVisibility(dashboardPage.pageSubtitleLocator,10);
             String expectedSubtitle = "Quick Launchpad";
             Assert.assertTrue("Verify that user should land to the Quick Launcpad",
                     expectedSubtitle.equalsIgnoreCase(dashboardPage.pageSubtitleLocator.getText()));
 
         }else if (userType.equalsIgnoreCase("sales manager") || userType.equalsIgnoreCase("store manager")){
+            BrowserUtils.waitForVisibility(dashboardPage.pageSubtitleLocator,10);
             String expectedSubtitle = "Dashboard";
             Assert.assertTrue("Verify that user should land to the Dashboard",
                     expectedSubtitle.equalsIgnoreCase(dashboardPage.pageSubtitleLocator.getText()));
