@@ -17,7 +17,10 @@ Scenario: "Grid Settings" should be visible when the user clicks on the gear ico
     Then the user see the "Grid Settings"
 
 Scenario: Column names in grid settings should be shown as below
-
+    Given the user should be login as a "sales manager"
+    When the user navigates to Fleet, Vehicles
+    And the user clicks on the gear icon
+    Then the user see the grid settings as expected
 #2-Column names in grid settings should be shown as below:
 #-Id
 #-License Plate

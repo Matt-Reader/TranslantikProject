@@ -10,8 +10,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class GridSettingsStepDefs {
 
@@ -26,10 +30,7 @@ public class GridSettingsStepDefs {
 
     @When("the user clicks on the gear icon")
     public void the_user_clicks_on_the_gear_icon() {
-
-    //WebDriverWait wait = new WebDriverWait(Driver.get(),20);
-   // wait.until(ExpectedConditions.visibilityOf(gridSettingsPage.gridSettingsButton));
-        BrowserUtils.waitFor(10);
+        BrowserUtils.waitFor(5);
         gridSettingsPage.gridSettingsButton.click();
 
     }
@@ -42,5 +43,17 @@ public class GridSettingsStepDefs {
         Assert.assertEquals("verify the page",expectedTitle,actualTitle);
         gridSettingsPage.logOut();
     }
+
+    @Then("the user see the grid settings as expected")
+    public void theUserSeeTheGridSettingsAsExpected() {
+
+        List<WebElement> rows = gridSettingsPage.GSOptionsTable;
+
+        for(WebElement row : rows){
+            row.getText();
+
+        }
+    }
+
 
 }
