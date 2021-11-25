@@ -10,12 +10,10 @@ import org.junit.Assert;
 
 public class LoginStepDefinitions {
 
-
     @Then("the user should be login as a {string}")
     public void the_user_should_be_login_as_a(String userType) {
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboardPage = new DashboardPage();
-        UserGenerator userGenerator = new UserGenerator();
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
