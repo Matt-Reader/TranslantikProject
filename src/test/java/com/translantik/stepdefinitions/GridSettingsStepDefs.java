@@ -6,6 +6,7 @@ import com.translantik.pages.LoginPage;
 import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
+import com.translantik.utilities.UserGenerator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,10 +17,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Map;
 
 public class GridSettingsStepDefs {
-
+    LoginPage loginPage = new LoginPage();
     GridSettingsPage gridSettingsPage = new GridSettingsPage();
+    @Given("the user logged in as {string}")
+    public void theUserLoggedInAsA(String userType) {
+        Driver.get().get(ConfigurationReader.get("url"));
+
+        loginPage.LoginAsUserTypes(userType);
+
+    }
 
     @When("the user navigates to Fleet, Vehicles")
     public void the_user_navigates_to_page() {
@@ -30,7 +39,7 @@ public class GridSettingsStepDefs {
 
     @When("the user clicks on the gear icon")
     public void the_user_clicks_on_the_gear_icon() {
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(9);
         gridSettingsPage.gridSettingsButton.click();
 
     }
@@ -41,19 +50,15 @@ public class GridSettingsStepDefs {
         String actualTitle = gridSettingsPage.gridSettingsMenuTitle.getText();
         String expectedTitle = gridSettings;
         Assert.assertEquals("verify the page",expectedTitle,actualTitle);
-        gridSettingsPage.logOut();
+
     }
 
     @Then("the user see the grid settings as expected")
-    public void theUserSeeTheGridSettingsAsExpected() {
+    public void theUserSeeTheGridSettingsAsExpected(List<String> menuOptions) {
 
-        List<WebElement> rows = gridSettingsPage.GSOptionsTable;
+        List<String> actualOptions = BrowserUtils.getElementsText(gridSettingsPage.GSOptionsTable);
+        Assert.assertEquals(menuOptions,actualOptions);
 
-        for(WebElement row : rows){
-            row.getText();
-
-        }
     }
-
 
 }

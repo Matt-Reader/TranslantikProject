@@ -21,6 +21,7 @@ public class LoginStepDefinitions {
 
     @Then("the user should be login as a {string}")
     public void the_user_should_be_login_as_a(String userType) {
+        Driver.get().get(ConfigurationReader.get("url"));
 
         loginPage.LoginAsUserTypes(userType);
 
