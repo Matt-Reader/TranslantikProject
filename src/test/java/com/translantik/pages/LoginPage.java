@@ -1,5 +1,6 @@
 package com.translantik.pages;
 
+import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
 import com.translantik.utilities.Driver;
 import org.openqa.selenium.WebElement;
@@ -19,14 +20,30 @@ public class LoginPage {
     public WebElement password;
 
     @FindBy(name = "_submit")
-    public WebElement submit;
+    public WebElement loginBTN;
 
 
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
-        submit.click();
+        loginBTN.click();
         // verification that we logged
+    }
+
+    public void LoginAsUserTypes(String userType){
+
+        if(userType.equalsIgnoreCase("driver")){
+            userName.sendKeys(ConfigurationReader.get("driver_username"));
+            password.sendKeys(ConfigurationReader.get("driver_password"));
+        } else if (userType.equalsIgnoreCase("salesmanager")){
+            userName.sendKeys(ConfigurationReader.get("salesmanager_username"));
+            password.sendKeys(ConfigurationReader.get("salesmanager_password"));
+        } else if (userType.equalsIgnoreCase("storemanager")) {
+            userName.sendKeys(ConfigurationReader.get("storemanager_username"));
+            password.sendKeys(ConfigurationReader.get("storemanager_password"));
+        }
+
+        loginBTN.click();
     }
 
 
