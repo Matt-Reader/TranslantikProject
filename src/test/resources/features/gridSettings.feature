@@ -1,17 +1,10 @@
-
 Feature:  Arranging vehicle table columns via "grid settings" functionality
-
-  Background: User login
-   Given the user is on the loginpage
-
+@wip
 Scenario: "Grid Settings" should be visible when the user clicks on the gear icon
-  Given the user logged in as "<userType>"
+  Given the user should be login as a "sales manager"
   When the user navigates to "Fleet-Vehicles" page
   And the user clicks on the gear icon
   Then the user see the "Grid Settings"
-
-
-
 
 #1-"Grid Settings" should be visible when the user clicks on the gear icon
 #2-Column names in grid settings should be shown as below:

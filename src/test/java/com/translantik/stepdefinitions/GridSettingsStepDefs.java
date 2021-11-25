@@ -5,14 +5,29 @@ import com.translantik.pages.LoginPage;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class GridSettingsStepDefs {
-    LoginPage loginPage = new LoginPage();
 
-    DashboardPage dashboardPage = new DashboardPage();
+    @When("the user navigates to {string} page")
+    public void the_user_navigates_to_page(String string) {
 
-    @Given("the user is on the loginpage")
-    public void the_user_is_on_the_loginpage() {
-        Driver.get().get(ConfigurationReader.get("url"));
+
+
     }
+
+    @When("the user clicks on the gear icon")
+    public void the_user_clicks_on_the_gear_icon() {
+
+
+    }
+
+    @Then("the user see the {string}")
+    public void the_user_see_the(String string) {
+
+
+
+    }
+
 }
