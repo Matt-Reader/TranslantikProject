@@ -4,6 +4,7 @@ import com.translantik.pages.DashboardPage;
 import com.translantik.pages.LoginPage;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
+import com.translantik.utilities.UserGenerator;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
@@ -14,25 +15,14 @@ public class LoginStepDefinitions {
     public void the_user_should_be_login_as_a(String userType) {
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboardPage = new DashboardPage();
+        UserGenerator userGenerator = new UserGenerator();
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
 
-        String username = null;
-        String password = null;
-
-        if (userType.equals("driver")) {
-            username = ConfigurationReader.get("driver_username");
-            password = ConfigurationReader.get("driver_password");
-        } else if (userType.equals("sales manager")) {
-            username = ConfigurationReader.get("sales_manager_username");
-            password = ConfigurationReader.get("sales_manager_password");
-        } else if (userType.equals("store manager")) {
-            username = ConfigurationReader.get("store_manager_username");
-            password = ConfigurationReader.get("store_manager_password");
-        }
+        UserGenerator.userGen(userType);
         //send username and password and login
-        loginPage.login(username, password);
+        loginPage.login(UserGenerator.username, UserGenerator.password);
 
         if (userType.equals("driver")){
             String expectedSubtitle = "Quick Launchpad";
@@ -41,7 +31,7 @@ public class LoginStepDefinitions {
 
         }else if (userType.equalsIgnoreCase("sales manager") || userType.equalsIgnoreCase("store manager")){
             String expectedSubtitle = "Dashboard";
-            Assert.assertTrue("Verify that user should land to the Quick Launcpad",
+            Assert.assertTrue("Verify that user should land to the Dashboard",
                     expectedSubtitle.equalsIgnoreCase(dashboardPage.pageSubtitleLocator.getText()));
 
         }
