@@ -27,5 +27,12 @@ public class LoginStepDefinitions {
     }
 
 
+    @Given("the {string} is on the Vehicles page")
+    public void theIsOnTheVehiclesPage(String userType) {
 
+        Driver.get().get(ConfigurationReader.get("url"));
+        loginPage.LoginAsUserTypes(userType);
+        dashboardPage.navigateToModule("Fleet", "Vehicles");
+        dashboardPage.waitUntilLoaderScreenDisappear();
+    }
 }
