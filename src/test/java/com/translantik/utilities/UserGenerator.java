@@ -1,5 +1,7 @@
 package com.translantik.utilities;
 
+import java.util.Locale;
+
 public class UserGenerator {
     public static String username = null;
     public static String password = null;
@@ -10,18 +12,18 @@ public class UserGenerator {
      */
     public static void userGen(String userType){
 
-        switch (userType) {
+        switch (userType.toLowerCase()) {
             case "driver":
                 username = ConfigurationReader.get("driver_username");
                 password = ConfigurationReader.get("driver_password");
 
                 break;
-            case "salesManager":
+            case "sales manager":
                 username = ConfigurationReader.get("sales_manager_username");
                 password = ConfigurationReader.get("sales_manager_password");
 
                 break;
-            case "storeManager":
+            case "store manager":
                 username = ConfigurationReader.get("store_manager_username");
                 password = ConfigurationReader.get("store_manager_password");
 
