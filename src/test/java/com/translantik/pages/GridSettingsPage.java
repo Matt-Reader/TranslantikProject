@@ -18,4 +18,12 @@ public class GridSettingsPage extends BasePage{
     @FindBy(xpath="(//*[@class='grid table-hover table table-condensed']//tbody/tr)")
     public List<WebElement> GSOptionsTable;
 
+
+    @FindBy(css=".column-manager-search.empty>input")
+    public WebElement quickSearchField;
+
+    @FindBy(xpath="(//*[@class='grid table-hover table table-condensed']//tbody/tr)[1]")
+    public WebElement firstElementOnGS;
+
+
 }

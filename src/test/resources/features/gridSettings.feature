@@ -42,6 +42,36 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | salesmanager |
       | storemanager |
 
+  Scenario Outline: User can find any column name by typing on the "Quick Search" input box
+    Given the user logged in as "<userType>"
+    When the user navigates to Fleet, Vehicles
+    And the user clicks on the gear icon
+    Then the user checked all the traits one by one
+      | Id                        |
+      | License Plate             |
+      | Tags                      |
+      | Driver                    |
+      | Location                  |
+      | Chassis Number            |
+      | Model Year                |
+      | Last Odometer             |
+      | Immatriculation Date      |
+      | First Contract Date       |
+      | Catalog Value (VAT Incl.) |
+      | Seats Number              |
+      | Doors Number              |
+      | Color                     |
+      | Transmission              |
+      | Fuel Type                 |
+      | CO2 Emissions             |
+      | Horsepower                |
+      | Horsepower Taxation       |
+      | Power (KW)                |
+    Examples:
+      | userType     |
+      | driver       |
+      | salesmanager |
+      | storemanager |
 #3-User can find any column name by typing on the "Quick Search" input box
 #4-User can select the columns to be displayed by clicking the column name
 #5-User can arrange the order of the columns (by dragging and dropping)

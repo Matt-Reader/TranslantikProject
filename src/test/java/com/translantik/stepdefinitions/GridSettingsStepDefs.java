@@ -61,4 +61,15 @@ public class GridSettingsStepDefs {
 
     }
 
+    @Then("the user checked all the traits one by one")
+    public void theUserCheckedAllTheTraitsOneByOne(List<String> menuOptions) {
+        int i = 1;
+        for (String element : menuOptions) {
+            gridSettingsPage.quickSearchField.sendKeys(element);
+            Assert.assertEquals(element,Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)["+i+"]")).getText());
+            gridSettingsPage.quickSearchField.clear();
+            i++;
+        }
+
+    }
 }
