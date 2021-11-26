@@ -22,8 +22,13 @@ public class GridSettingsPage extends BasePage{
     @FindBy(css=".column-manager-search.empty>input")
     public WebElement quickSearchField;
 
+    // I did not use that locator because I created a dynamic locator in order to verify grid settings menu options
     @FindBy(xpath="(//*[@class='grid table-hover table table-condensed']//tbody/tr)[1]")
     public WebElement firstElementOnGS;
+
+    @FindBy(xpath="//*[@class='grid table-hover table table-bordered table-condensed']/thead[1]/tr/th")
+    public List<WebElement> carsPageHeaders;
+
 
 
 }

@@ -7,17 +7,20 @@ import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
 import com.translantik.utilities.UserGenerator;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class GridSettingsStepDefs {
     LoginPage loginPage = new LoginPage();
@@ -32,15 +35,19 @@ public class GridSettingsStepDefs {
 
     @When("the user navigates to Fleet, Vehicles")
     public void the_user_navigates_to_page() {
+        gridSettingsPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(2);
+        gridSettingsPage.navigateToModule("Fleet","Vehicles");
 
-         gridSettingsPage.navigateToModule("Fleet","Vehicles");
 
     }
 
     @When("the user clicks on the gear icon")
     public void the_user_clicks_on_the_gear_icon() {
-        BrowserUtils.waitFor(9);
+        gridSettingsPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(7);
         gridSettingsPage.gridSettingsButton.click();
+
 
     }
 
@@ -70,6 +77,53 @@ public class GridSettingsStepDefs {
             gridSettingsPage.quickSearchField.clear();
             i++;
         }
+
+    }
+
+    @Then("the user unclicked some of the menu icons")
+    public void theUserUnclickedsomeOfTheMenuIcons() {
+        // this code is not able to click all the elements I guess I need to scroll down at the same time eith a new loop
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.get();
+        for (int i = 2 ; i<=7 ; i++) {
+           Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)["+i+"]")).click();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+    @And("the user select {} column randomly and the column should appear on the All Cars page screen")
+    public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen(String columns) {
+
+        Random rn = new Random();
+        int randomCheckbox = rn.nextInt(6)+1 ;
+
+        WebElement element = Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)[" + randomCheckbox + "]"));
+        element.click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for (WebElement carsPageHeader : gridSettingsPage.carsPageHeaders) {
+            String text = carsPageHeader.getText();
+
+            if(text.equalsIgnoreCase(element.getText())){
+                break;
+            }else{
+                System.out.println("verify the checkbox that randomly selected");
+            }
+    }
+    }
+    @And("the user see the column on the screen")
+    public void theUserSeeTheColumnOnTheScreen() {
+
+
 
     }
 }
