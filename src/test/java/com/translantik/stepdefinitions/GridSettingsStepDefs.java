@@ -15,6 +15,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,6 +24,9 @@ import java.util.Map;
 import java.util.Random;
 
 public class GridSettingsStepDefs {
+    Actions actions = new Actions(Driver.get());
+    JavascriptExecutor jse = (JavascriptExecutor) Driver.get();
+    Random rn = new Random();
     LoginPage loginPage = new LoginPage();
     GridSettingsPage gridSettingsPage = new GridSettingsPage();
     @Given("the user logged in as {string}")
@@ -83,7 +87,7 @@ public class GridSettingsStepDefs {
     @Then("the user unclicked some of the menu icons")
     public void theUserUnclickedsomeOfTheMenuIcons() {
         // this code is not able to click all the elements I guess I need to scroll down at the same time eith a new loop
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.get();
+
         for (int i = 2 ; i<=7 ; i++) {
            Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)["+i+"]")).click();
             try {
@@ -99,10 +103,10 @@ public class GridSettingsStepDefs {
     @And("the user select {} column randomly and the column should appear on the All Cars page screen")
     public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen(String columns) {
 
-        Random rn = new Random();
         int randomCheckbox = rn.nextInt(6)+1 ;
 
-        WebElement element = Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)[" + randomCheckbox + "]"));
+        WebElement element = Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table " +
+                "table-condensed']//tbody/tr)[" + randomCheckbox + "]"));
         element.click();
         try {
             Thread.sleep(500);
@@ -120,10 +124,21 @@ public class GridSettingsStepDefs {
             }
     }
     }
-    @And("the user see the column on the screen")
-    public void theUserSeeTheColumnOnTheScreen() {
 
+    @When("drag and drop any element, needs to be changed it's order")
+    public void dragAndDropAnyElementNeedsToBeChangedItSOrder() {
+            String dummy = "Id";
+        for (int i = 0; i < 5; i++) {
+            int source = rn.nextInt(10) +6;
+            int target = 0;
 
+            actions.moveToElement(gridSettingsPage.sortList.get(source)).clickAndHold().
+                    pause(1000).moveToElement(gridSettingsPage.sortList.get(target)).pause(1000).release().perform();
+            BrowserUtils.waitFor(2);
+            Assert.assertFalse(dummy.contains(gridSettingsPage.titleCell.get(0).getText()));
+            dummy+=gridSettingsPage.titleCell.get(0).getText();
+
+        }
 
     }
 }

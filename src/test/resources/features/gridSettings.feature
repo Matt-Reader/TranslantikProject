@@ -80,7 +80,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     And the user unclicked some of the menu icons
     Then the user select 1 column randomly and the column should appear on the All Cars page screen
     Examples:
-      | userType |
+      | userType     |
       | driver       |
       | salesmanager |
       | storemanager |
@@ -90,8 +90,9 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
     And the user clicks on the gear icon
+    When drag and drop any element, needs to be changed it's order
     Examples:
-      | userType |
+      | userType     |
       | driver       |
       | salesmanager |
       | storemanager |
@@ -101,7 +102,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     When the user navigates to Fleet, Vehicles
     And the user clicks on the gear icon
     Examples:
-      | userType |
+      | userType     |
       | driver       |
       | salesmanager |
       | storemanager |
