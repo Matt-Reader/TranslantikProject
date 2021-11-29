@@ -58,7 +58,7 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
       | storemanager |
 
     #TC-6:
-  Scenario Outline: verify that deleted car is removed from vehicle page
+  Scenario Outline: verify that the deleted car is removed from vehicle page
     Given the "<userType>" is on the Vehicles page
     When the user delete a car from vehicle page
     Then the deleted car should be removed from vehicle page
