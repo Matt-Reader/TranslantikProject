@@ -25,3 +25,37 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
     |driver|
 ##   |salesmanager|
 #   |storemanager|
+
+  #TC-3:
+  Scenario: the user as a driver doesn't have permission to delete a car
+    Given the "driver" is on the Vehicles page
+    When the user hover on the three dots at the end each row
+    And the user click on the delete button
+    Then for user the message "You do not have permission to perform this action." should be displayed
+
+    #TC-4:
+  Scenario Outline: the user as a "<userType>" should able to delete a car
+    Given the "<userType>" is on the Vehicles page
+    When the user hover on the three dots at the end each row
+    And the user click on the delete button
+    Then for user the message "Item deleted" should be displayed
+    Examples:
+      | userType     |
+      | salesmanager |
+      | storemanager |
+
+    #TC-5:
+  Scenario Outline: the user as a "<userType>" should able to delete a car from General Information page
+    Given the "<userType>" is on the Vehicles page
+    And the user click on any random row in vehicle page
+    When the user click on the delete button in General Information page
+    Then for user the message "Car deleted" should be displayed
+    Examples:
+      | userType     |
+      | salesmanager |
+      | storemanager |
+
+    #TC-6:
+
+
+
