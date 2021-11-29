@@ -26,7 +26,6 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
     | storemanager |
 
   #TC-3:
-  @wip
   Scenario: the user as a driver doesn't have permission to delete a car
     Given the "driver" is on the Vehicles page
     When the user hover on the three dots at the end each row
@@ -47,15 +46,17 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
       | storemanager |
 
     #TC-5:
+  @wip
   Scenario Outline: the user as a "<userType>" should able to delete a car from General Information page
     Given the "<userType>" is on the Vehicles page
     And the user click on any random row in vehicle page
     When the user click on the delete button in General Information page
+    And the user click on the Yes, Delete button from pop up Delete Confirmation
     Then for user the message "Car deleted" should be displayed
     Examples:
       | userType     |
       | salesmanager |
-      | storemanager |
+      #| storemanager |
 
     #TC-6:
 

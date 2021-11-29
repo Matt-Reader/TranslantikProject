@@ -7,6 +7,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.Random;
 
 public class DeleteACar_StepDefs {
 
@@ -51,4 +55,23 @@ public class DeleteACar_StepDefs {
     }
 
 
+    @And("the user click on any random row in vehicle page")
+    public void theUserClickOnAnyRandomRowInVehiclePage() {
+        Driver.get().manage().window().maximize();
+        BrowserUtils.waitFor(10);
+        //Driver.get().findElements(By.xpath("//tbody//tr[@class='grid-row row-click-action']")).size()
+        Random random = new Random();
+        int randomRow = random.nextInt(Driver.get().findElements(By.xpath("//tbody//tr[@class='grid-row row-click-action']")).size());
+        BrowserUtils.waitFor(4);
+        String element = "//tbody//tr[@class='grid-row row-click-action']//td[4]";
+        WebElement webEleRow = Driver.get().findElement(By.xpath("//tbody//tr[@class='grid-row row-click-action']//td[4]"));
+        
+        BrowserUtils.clickWithJS(webEleRow);
+        vehicle.waitUntilLoaderScreenDisappear();
+    }
+
+    @When("the user click on the delete button in General Information page")
+    public void theUserClickOnTheDeleteButtonInGeneralInformationPage() {
+        vehicle.generalInfoDltBtn.click();
+    }
 }

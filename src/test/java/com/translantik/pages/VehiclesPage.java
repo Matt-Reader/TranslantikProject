@@ -25,6 +25,9 @@ public class VehiclesPage extends BasePage {
     @FindBy(css = "div[class='message']")
     public WebElement alertDeleteMSG;
 
+    @FindBy(css = "a[title='Delete Car']")
+    public WebElement generalInfoDltBtn;
+
     public void hoverOnThreeDot (){
 
         Random rand = new Random();
