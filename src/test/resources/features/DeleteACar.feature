@@ -46,7 +46,6 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
       | storemanager |
 
     #TC-5:
-  @wip
   Scenario Outline: the user as a "<userType>" should able to delete a car from General Information page
     Given the "<userType>" is on the Vehicles page
     And the user click on any random row in vehicle page
@@ -56,9 +55,16 @@ Feature: As a 'Sales Manager' and 'Store Manager', I should be able to delete a 
     Examples:
       | userType     |
       | salesmanager |
-      #| storemanager |
+      | storemanager |
 
     #TC-6:
+  Scenario Outline: verify that deleted car is removed from vehicle page
+    Given the "<userType>" is on the Vehicles page
+    When the user delete a car from vehicle page
+    Then the deleted car should be removed from vehicle page
 
-
+    Examples:
+      | userType     |
+      | salesmanager |
+      | storemanager |
 

@@ -58,20 +58,45 @@ public class DeleteACar_StepDefs {
     @And("the user click on any random row in vehicle page")
     public void theUserClickOnAnyRandomRowInVehiclePage() {
         Driver.get().manage().window().maximize();
-        BrowserUtils.waitFor(10);
+        BrowserUtils.waitFor(4);
         //Driver.get().findElements(By.xpath("//tbody//tr[@class='grid-row row-click-action']")).size()
         Random random = new Random();
-        int randomRow = random.nextInt(Driver.get().findElements(By.xpath("//tbody//tr[@class='grid-row row-click-action']")).size());
+        int randomRow = random.nextInt(Driver.get().findElements(By.xpath("(//td[@data-column-label='Driver'])")).size());
         BrowserUtils.waitFor(4);
-        String element = "//tbody//tr[@class='grid-row row-click-action']//td[4]";
-        WebElement webEleRow = Driver.get().findElement(By.xpath("//tbody//tr[@class='grid-row row-click-action']//td[4]"));
-        
-        BrowserUtils.clickWithJS(webEleRow);
+        Driver.get().findElement(By.xpath("(//td[@data-column-label='Driver'])["+randomRow+"]")).click();
+
+        BrowserUtils.waitFor(10);
         vehicle.waitUntilLoaderScreenDisappear();
     }
 
     @When("the user click on the delete button in General Information page")
     public void theUserClickOnTheDeleteButtonInGeneralInformationPage() {
+
         vehicle.generalInfoDltBtn.click();
+    }
+
+
+    String expectedName;
+    @When("the user delete a car from vehicle page")
+    public void theUserDeleteACarFromVehiclePage() {
+
+        BrowserUtils.waitFor(2);
+        WebElement driverName = Driver.get().findElement(By.xpath("(//td[@data-column-label='Driver'])[1]"));
+        expectedName = driverName.getText();
+        driverName.click();
+        BrowserUtils.waitFor(2);
+        vehicle.waitUntilLoaderScreenDisappear();
+        vehicle.generalInfoDltBtn.click();
+        BrowserUtils.waitFor(2);
+        vehicle.popUpYesDeleteBTN.click();
+        BrowserUtils.waitFor(2);
+
+    }
+
+    @Then("the deleted car should be removed from vehicle page")
+    public void theDeletedCarShouldBeRemovedFromVehiclePage() {
+
+        String actualName = Driver.get().findElement(By.xpath("(//td[@data-column-label='Driver'])[1]")).getText();
+        Assert.assertFalse(expectedName.contains(actualName));
     }
 }
