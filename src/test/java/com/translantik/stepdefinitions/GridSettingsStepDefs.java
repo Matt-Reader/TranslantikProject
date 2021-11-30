@@ -24,15 +24,13 @@ import java.util.Map;
 import java.util.Random;
 
 public class GridSettingsStepDefs {
-    Actions actions = new Actions(Driver.get());
-    JavascriptExecutor jse = (JavascriptExecutor) Driver.get();
-    Random rn = new Random();
+
     LoginPage loginPage = new LoginPage();
     GridSettingsPage gridSettingsPage = new GridSettingsPage();
+
     @Given("the user logged in as {string}")
     public void theUserLoggedInAsA(String userType) {
         Driver.get().get(ConfigurationReader.get("url"));
-
         loginPage.LoginAsUserTypes(userType);
 
     }
@@ -72,73 +70,38 @@ public class GridSettingsStepDefs {
 
     }
 
-    @Then("the user checked all the traits one by one")
-    public void theUserCheckedAllTheTraitsOneByOne(List<String> menuOptions) {
-        int i = 1;
-        for (String element : menuOptions) {
-            gridSettingsPage.quickSearchField.sendKeys(element);
-            Assert.assertEquals(element,Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)["+i+"]")).getText());
-            gridSettingsPage.quickSearchField.clear();
-            i++;
-        }
+    @Then("the user checked all the menu options one by one")
+    public void theUserCheckedAllTheMenuOptionsOneByOne(List<String> menuOptions) {
 
+    gridSettingsPage.menuoptionsSearchEngine(menuOptions);
     }
 
     @Then("the user unclicked some of the menu icons")
     public void theUserUnclickedsomeOfTheMenuIcons() {
         // this code is not able to click all the elements I guess I need to scroll down at the same time eith a new loop
 
-        for (int i = 2 ; i<=7 ; i++) {
-           Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)["+i+"]")).click();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
+        gridSettingsPage.unclickMenuItems(7);
 
     }
 
     @And("the user select {} column randomly and the column should appear on the All Cars page screen")
-    public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen(String columns) {
+    public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen() {
 
-        int randomCheckbox = rn.nextInt(6)+1 ;
+        gridSettingsPage.clickARondomCheckBox();
 
-        WebElement element = Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table " +
-                "table-condensed']//tbody/tr)[" + randomCheckbox + "]"));
-        element.click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        for (WebElement carsPageHeader : gridSettingsPage.carsPageHeaders) {
-            String text = carsPageHeader.getText();
-
-            if(text.equalsIgnoreCase(element.getText())){
-                break;
-            }else{
-                System.out.println("verify the checkbox that randomly selected");
-            }
-    }
     }
 
     @When("drag and drop any element, needs to be changed it's order")
     public void dragAndDropAnyElementNeedsToBeChangedItSOrder() {
-            String dummy = "Id";
-        for (int i = 0; i < 5; i++) {
-            int source = rn.nextInt(10) +6;
-            int target = 0;
+        gridSettingsPage.dragAndDropItems(5);
 
-            actions.moveToElement(gridSettingsPage.sortList.get(source)).clickAndHold().
-                    pause(1000).moveToElement(gridSettingsPage.sortList.get(target)).pause(1000).release().perform();
-            BrowserUtils.waitFor(2);
-            Assert.assertFalse(dummy.contains(gridSettingsPage.titleCell.get(0).getText()));
-            dummy+=gridSettingsPage.titleCell.get(0).getText();
+    }
 
-        }
+    @Then("the user clicked {int} check-boxes and see corresponding changes under the Fleet-Vehicles page")
+    public void theUserClickedCheckBoxesAndSeeCorrespondingChangesUnderTheFleetVehiclesPage(int number) {
+
+        gridSettingsPage.clickColumnsandVerify(number);
+
 
     }
 }

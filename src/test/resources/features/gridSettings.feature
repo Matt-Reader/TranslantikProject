@@ -46,7 +46,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
     And the user clicks on the gear icon
-    Then the user checked all the traits one by one
+    Then the user checked all the menu options one by one
       | Id                        |
       | License Plate             |
       | Tags                      |
@@ -101,8 +101,11 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
     And the user clicks on the gear icon
+    And the user unclicked some of the menu icons
+    Then the user clicked 3 check-boxes and see corresponding changes under the Fleet-Vehicles page
+
     Examples:
       | userType     |
-      | driver       |
+     # | driver       |
       | salesmanager |
-      | storemanager |
+    #  | storemanager |
