@@ -1,3 +1,4 @@
+@GridSettings
 Feature:  Arranging vehicle table columns via "grid settings" functionality
 #AC1
   Scenario Outline: "Grid Settings" should be visible when the user clicks on the gear icon
@@ -7,9 +8,9 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Then the user see the "Grid Settings"
     Examples:
       | userType     |
-      | driver       |
+   #  | driver       |
       | salesmanager |
-      | storemanager |
+   #   | storemanager |
 #AC2
   Scenario Outline: Column names in grid settings should be shown as below
     Given the user logged in as "<userType>"
@@ -38,7 +39,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | Power (KW)                |
     Examples:
       | userType     |
-      | driver       |
+  #    | driver       |
       | salesmanager |
       | storemanager |
 #AC3
@@ -70,7 +71,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Examples:
       | userType     |
       | driver       |
-      | salesmanager |
+   #   | salesmanager |
       | storemanager |
 #AC4
   Scenario Outline: User can select the columns to be displayed by clicking the column name
@@ -81,8 +82,8 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     Then the user select 1 column randomly and the column should appear on the All Cars page screen
     Examples:
       | userType     |
-      | driver       |
-      | salesmanager |
+   #   | driver       |
+   #   | salesmanager |
       | storemanager |
 #AC5
   @wip
@@ -92,10 +93,10 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     And the user clicks on the gear icon
     When drag and drop any element, needs to be changed it's order
     Examples:
-      | userType     |
-      | driver       |
-      | salesmanager |
-      | storemanager |
+      | userType |
+      | driver   |
+    #  | salesmanager |
+     # | storemanager |
 #AC6
   Scenario Outline: User can see all corresponding changes under the 'Fleet-Vehicles' page
     Given the user logged in as "<userType>"
@@ -108,4 +109,4 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | userType     |
      # | driver       |
       | salesmanager |
-    #  | storemanager |
+     # | storemanager |

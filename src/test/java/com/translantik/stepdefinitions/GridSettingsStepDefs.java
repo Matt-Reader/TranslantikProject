@@ -1,27 +1,17 @@
 package com.translantik.stepdefinitions;
 
-import com.translantik.pages.DashboardPage;
 import com.translantik.pages.GridSettingsPage;
 import com.translantik.pages.LoginPage;
 import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.ConfigurationReader;
 import com.translantik.utilities.Driver;
-import com.translantik.utilities.UserGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
+
 
 public class GridSettingsStepDefs {
 
@@ -32,7 +22,6 @@ public class GridSettingsStepDefs {
     public void theUserLoggedInAsA(String userType) {
         Driver.get().get(ConfigurationReader.get("url"));
         loginPage.LoginAsUserTypes(userType);
-
     }
 
     @When("the user navigates to Fleet, Vehicles")
@@ -40,8 +29,6 @@ public class GridSettingsStepDefs {
         gridSettingsPage.waitUntilLoaderScreenDisappear();
         BrowserUtils.waitFor(2);
         gridSettingsPage.navigateToModule("Fleet","Vehicles");
-
-
     }
 
     @When("the user clicks on the gear icon")
@@ -49,8 +36,6 @@ public class GridSettingsStepDefs {
         gridSettingsPage.waitUntilLoaderScreenDisappear();
         BrowserUtils.waitFor(7);
         gridSettingsPage.gridSettingsButton.click();
-
-
     }
 
     @Then("the user see the {string}")
@@ -59,7 +44,6 @@ public class GridSettingsStepDefs {
         String actualTitle = gridSettingsPage.gridSettingsMenuTitle.getText();
         String expectedTitle = gridSettings;
         Assert.assertEquals("verify the page",expectedTitle,actualTitle);
-
     }
 
     @Then("the user see the grid settings as expected")
@@ -67,13 +51,12 @@ public class GridSettingsStepDefs {
 
         List<String> actualOptions = BrowserUtils.getElementsText(gridSettingsPage.GSOptionsTable);
         Assert.assertEquals(menuOptions,actualOptions);
-
     }
 
     @Then("the user checked all the menu options one by one")
     public void theUserCheckedAllTheMenuOptionsOneByOne(List<String> menuOptions) {
 
-    gridSettingsPage.menuoptionsSearchEngine(menuOptions);
+        gridSettingsPage.menuoptionsSearchEngine(menuOptions);
     }
 
     @Then("the user unclicked some of the menu icons")
@@ -81,27 +64,22 @@ public class GridSettingsStepDefs {
         // this code is not able to click all the elements I guess I need to scroll down at the same time eith a new loop
 
         gridSettingsPage.unclickMenuItems(7);
-
     }
 
     @And("the user select {} column randomly and the column should appear on the All Cars page screen")
-    public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen() {
+    public void theUserSelectColumnRandomlyAndtheColumnShouldAppearOnTheAllCarsPageScreen(int column) {
 
         gridSettingsPage.clickARondomCheckBox();
-
     }
 
     @When("drag and drop any element, needs to be changed it's order")
     public void dragAndDropAnyElementNeedsToBeChangedItSOrder() {
         gridSettingsPage.dragAndDropItems(5);
-
     }
 
     @Then("the user clicked {int} check-boxes and see corresponding changes under the Fleet-Vehicles page")
     public void theUserClickedCheckBoxesAndSeeCorrespondingChangesUnderTheFleetVehiclesPage(int number) {
 
         gridSettingsPage.clickColumnsandVerify(number);
-
-
     }
 }

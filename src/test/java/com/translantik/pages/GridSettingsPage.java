@@ -40,13 +40,9 @@ public class GridSettingsPage extends BasePage{
     @FindBy(css = ".title-cell>label")
     public List<WebElement> titleCell;
 
-    @FindBy(css = ".visibility-cell")
-    public List<WebElement> visibilityCell;
 
     Actions actions = new Actions(Driver.get());
     Random rn = new Random();
-
-
 
     /**
      * this method clicks any number of the columns at the grid settings page and verify
@@ -64,7 +60,6 @@ public class GridSettingsPage extends BasePage{
             Assert.assertEquals("verify that the element clicked",expectedTextUpper,actualText);
 
         }
-
     }
 
     /**
@@ -75,7 +70,6 @@ public class GridSettingsPage extends BasePage{
     public void unclickMenuItems(int columnNumber){
   for (int i = 2 ; i<=columnNumber ; i++) {
       Driver.get().findElement(By.xpath("(//*[@class='grid table-hover table table-condensed']//tbody/tr)[" + i + "]")).click();
-
   }
     }
 
@@ -100,6 +94,10 @@ public class GridSettingsPage extends BasePage{
 
         }
     }
+
+    /**
+     * this method clicks one random checkbox which is between 0-6 checkboxes
+     */
     public void clickARondomCheckBox() {
         int randomCheckbox = rn.nextInt(6)+1 ;
 
@@ -112,7 +110,7 @@ public class GridSettingsPage extends BasePage{
     /**
      * This method writes all of the menu options, which given in feature files as a list, in the Grid Settings text fields
      * And verify if it finds the written element appear as a first element of the table underneath.
-     *
+     * @param menuOptions
      */
 
     public void menuoptionsSearchEngine(List<String> menuOptions) {
