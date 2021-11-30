@@ -18,12 +18,12 @@ public class UserGenerator {
                 password = ConfigurationReader.get("driver_password");
 
                 break;
-            case "sales manager":
+            case "salesmanager":
                 username = ConfigurationReader.get("sales_manager_username");
                 password = ConfigurationReader.get("sales_manager_password");
 
                 break;
-            case "store manager":
+            case "storemanager":
                 username = ConfigurationReader.get("store_manager_username");
                 password = ConfigurationReader.get("store_manager_password");
 
@@ -32,6 +32,7 @@ public class UserGenerator {
                 System.out.println("WARNING: <You did not enter a valid keyword on the feature page or check properties page");
                 break;
         }
+
 
     }
 }
