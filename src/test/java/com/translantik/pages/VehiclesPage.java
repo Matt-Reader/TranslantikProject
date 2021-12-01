@@ -2,6 +2,7 @@ package com.translantik.pages;
 
 import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,6 +29,10 @@ public class VehiclesPage extends BasePage {
     @FindBy(css = "a[title='Delete Car']")
     public WebElement generalInfoDltBtn;
 
+    @FindBy(xpath = "//div/label[@class='dib'][2]")
+    public WebElement totalPageNumber;
+
+
     public void hoverOnThreeDot (){
 
         Random rand = new Random();
@@ -39,6 +44,16 @@ public class VehiclesPage extends BasePage {
         actions.moveToElement(threeDot).build().perform();
         BrowserUtils.waitFor(3);
         BrowserUtils.clickWithJS(threeDot);
+    }
+
+    public void driverNameIsVisible(){
+        for (int i = 1; i <=25 ; i++) {
+    Driver.get().findElement(By.xpath("(//tbody/tr/td[@data-column-label='Driver'])[" + i + "]")).isEnabled();
+        }
+    }
+
+    public void totalPgeNumberIsVisible(){
+        totalPageNumber.isEnabled();
     }
 
 

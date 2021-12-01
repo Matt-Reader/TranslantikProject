@@ -19,3 +19,4 @@ public class vehicleStepDef {
         dashboardPage.navigateToModule("Fleet", "Vehicles");
         dashboardPage.waitUntilLoaderScreenDisappear();
 }
+    }
