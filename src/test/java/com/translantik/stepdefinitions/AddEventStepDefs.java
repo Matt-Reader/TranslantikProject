@@ -1,8 +1,6 @@
 package com.translantik.stepdefinitions;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.Number;
-import com.translantik.pages.GeneralinfoPage;
 import com.translantik.pages.VehiclesPage;
 import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.Driver;
@@ -17,7 +15,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddEventButtonStepDefs {
+public class AddEventStepDefs {
     VehiclesPage vehiclesPage=new VehiclesPage();
 
     Faker faker=new Faker();
