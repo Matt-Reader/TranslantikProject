@@ -19,7 +19,7 @@ import java.util.List;
 
 public class AddEventButtonStepDefs {
     VehiclesPage vehiclesPage=new VehiclesPage();
-    GeneralinfoPage pageName=new GeneralinfoPage();
+
     Faker faker=new Faker();
 
     @When("the user should be able to click any vehicle")
