@@ -19,8 +19,10 @@ Feature:
     Given the "<userType>" is on the Vehicles page
     When the user should see all vehicles information under module
     Then the user should see the total page number
-    #And the user should go to next page after clicking the next button
-    #And the user should go to previous page after clicking the previous button
+    And the user should go to next page after clicking the next button
+    And the user should go to previous page after clicking the previous button
+    And the user should see the total recordings of vehicles
+    And the user should download table data in XLS or CSV format from Export Grid button
     Examples:
       | userType     |
       | driver       |

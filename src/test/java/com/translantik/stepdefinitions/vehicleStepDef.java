@@ -20,4 +20,3 @@ public class vehicleStepDef {
         dashboardPage.waitUntilLoaderScreenDisappear();
     }
 }
-    }

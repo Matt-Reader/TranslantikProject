@@ -29,8 +29,32 @@ public class VehiclesPage extends BasePage {
     @FindBy(css = "a[title='Delete Car']")
     public WebElement generalInfoDltBtn;
 
-    @FindBy(xpath = "//div/label[@class='dib'][2]")
+    @FindBy(xpath = "//label[contains(text(),'of')][1]")
     public WebElement totalPageNumber;
+
+    @FindBy(css = ".fa-chevron-right.hide-text")
+    public WebElement nextButton;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement PageNumber;
+
+    @FindBy(css=".fa-chevron-left.hide-text")
+    public WebElement previousButton;
+
+    @FindBy(xpath = "//label[@class='dib'][3]")
+    public WebElement totalVehicleNumber;
+
+    @FindBy(css=".action.btn.mode-text-only.dropdown-toggle")
+    public WebElement exportGridButton;
+
+    @FindBy(xpath = "//a[@title='CSV']")
+    public WebElement CSVButton;
+
+    @FindBy(xpath = "//div[text()='Export started successfully. You will receive email notification upon completion.']")
+    public WebElement confirmMessage;
+
+
+
 
 
     public void hoverOnThreeDot (){
@@ -48,13 +72,11 @@ public class VehiclesPage extends BasePage {
 
     public void driverNameIsVisible(){
         for (int i = 1; i <=25 ; i++) {
-    Driver.get().findElement(By.xpath("(//tbody/tr/td[@data-column-label='Driver'])[" + i + "]")).isEnabled();
+    Assert.assertTrue(Driver.get().findElement(By.xpath("(//tbody/tr/td[@data-column-label='Driver'])[" + i + "]"))
+            .isDisplayed());
         }
     }
 
-    public void totalPgeNumberIsVisible(){
-        totalPageNumber.isEnabled();
-    }
 
 
 }
