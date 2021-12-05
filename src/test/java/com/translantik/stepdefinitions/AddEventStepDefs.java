@@ -43,6 +43,7 @@ public class AddEventStepDefs {
 
     @Then("the user should be able to launch on {string} page")
     public void the_user_should_be_able_to_launch_on_page(String generalInfo) {
+        vehiclesPage.alertDeleteMSG.click();
         generalInfo=Driver.get().findElement(By.cssSelector("h5[class='user-fieldset'] span")).getText();
         Assert.assertEquals("General Information",generalInfo);
     }

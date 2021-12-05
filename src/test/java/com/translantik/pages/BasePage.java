@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public abstract class  BasePage {
-    public LoginPage(){
+    public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
@@ -39,9 +39,7 @@ public abstract class  BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
-    public BasePage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+
 
 
     /**
