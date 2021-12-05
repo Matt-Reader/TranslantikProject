@@ -1,7 +1,7 @@
 @TRN-1141
 Feature:As a store manager and sales manager, I should be able to add an event
 
-  @AC1
+  @TRN-1190
   Scenario Outline: User can access the  the "General Information" page
   (by clicking on any vehicle/row under Fleet-Vehicle module)
     Given the "<userType>" is on the Vehicles page
@@ -13,30 +13,27 @@ Feature:As a store manager and sales manager, I should be able to add an event
       | salesmanager |
       | storemanager |
 
-  @AC2.1
+  @TRN-1191
   Scenario Outline: Sales Manager and Store manager can click "Add Event" button
     Given the "<userType>" is on the Vehicles page
     When the user should be able to click any vehicle
-    Then the user should be able to click on "Add Event" button
+    And the user should be able to see "Add Event" button
     Examples:
       | userType     |
-     # | driver       |
       | salesmanager |
       | storemanager |
 
-  @AC2.2
-  Scenario Outline: but Driver can NOT see "Add Event" button
+  @TRN-1192
+  Scenario Outline: Driver can NOT see "Add Event" button
     Given the "<userType>" is on the Vehicles page
     When the user should be able to click any vehicle
     Then the Driver should NOT see "Add Event" button
     Examples:
       | userType |
       | driver   |
-     # | salesmanager |
-      #| storemanager |
 
 
-  @AC3
+  @TRN-1193
   Scenario Outline: After clicking on "Add event" button, "Add Event" page should pop up.
     Given the "<userType>" is on the Vehicles page
     When the user should be able to click any vehicle
@@ -44,11 +41,10 @@ Feature:As a store manager and sales manager, I should be able to add an event
     And the "Add Event" pop up should be open
     Examples:
       | userType     |
-     # | driver       |
       | salesmanager |
       | storemanager |
 
-  @AC4
+  @TRN-1194
   Scenario Outline: User Should see Title, Owner, Organizer display name, Organizer email, Start Date, End Date as a compulsory field
     Given the "<userType>" is on the Vehicles page
     When the user should be able to click any vehicle
@@ -59,7 +55,7 @@ Feature:As a store manager and sales manager, I should be able to add an event
       | salesmanager |
       | storemanager |
 
-  @AC5
+  @TRN-1195
   Scenario Outline: If any compulsory field is not filled, "This value should not be blank." message
   should be displayed after clicking on save button.(All filled except Title)
     Given the "<userType>" is on the Vehicles page
