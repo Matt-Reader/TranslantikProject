@@ -22,6 +22,9 @@ public class LoginPage {
     @FindBy(name = "_submit")
     public WebElement loginBTN;
 
+    @FindBy(id = "remember_me")
+    public WebElement rememberMeCheckBox;
+
 
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
