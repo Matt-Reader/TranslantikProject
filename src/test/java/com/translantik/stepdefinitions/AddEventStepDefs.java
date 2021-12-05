@@ -24,7 +24,7 @@ public class AddEventStepDefs {
     public void the_user_should_be_able_to_click_any_vehicle() {
 
 
-        BrowserUtils.waitFor(6);
+        BrowserUtils.waitFor(10);
         List<WebElement> carList=Driver.get().findElements(By.xpath("//tbody/tr"));
         /*for (int i = 1; i < carList.size(); i++) {
 
@@ -37,12 +37,13 @@ public class AddEventStepDefs {
         }*/
         int vehicle= faker.random().nextInt(1,carList.size());
         Driver.get().findElement(By.xpath("//tbody/tr["+vehicle+"]")).click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(4);
 
     }
 
     @Then("the user should be able to launch on {string} page")
     public void the_user_should_be_able_to_launch_on_page(String generalInfo) {
+        vehiclesPage.alertDeleteMSG.click();
         generalInfo=Driver.get().findElement(By.cssSelector("h5[class='user-fieldset'] span")).getText();
         Assert.assertEquals("General Information",generalInfo);
     }
@@ -57,12 +58,14 @@ public class AddEventStepDefs {
     public void theUserShouldBeAbleToClickOnButton(String addButton) {
         BrowserUtils.waitFor(2);
         Driver.get().findElement(By.cssSelector("a[title='Add an event to this record']")).click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(5);
     }
 
     @Then("the {string} pop up should be open")
     public void the_pop_up_should_be_open(String popUp) {
+        BrowserUtils.waitFor(3);
         Assert.assertTrue("verify the page is popup",Driver.get().findElement(By.cssSelector("div[role='dialog']")).isDisplayed());
+        BrowserUtils.waitFor(2);
         Driver.get().findElement(By.cssSelector("button[title='close']")).click();
     }
 
