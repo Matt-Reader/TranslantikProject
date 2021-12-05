@@ -20,10 +20,6 @@ public abstract class  BasePage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    public BasePage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
-
     @FindBy(css = "span.title-level-1")
     public List<WebElement> menuOptions;
 
