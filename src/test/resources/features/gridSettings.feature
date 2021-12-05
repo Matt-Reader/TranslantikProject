@@ -1,6 +1,6 @@
 Feature:  Arranging vehicle table columns via "grid settings" functionality
 #AC1
-@TRN-1162 @wip
+@TRN-1162
   Scenario Outline: "Grid Settings" should be visible when the user clicks on the gear icon
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -12,7 +12,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | salesmanager |
    #   | storemanager |
 #AC2
-@TRN-1163 @wip
+@TRN-1163
   Scenario Outline: Column names in grid settings should be shown as below
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -44,7 +44,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | salesmanager |
       | storemanager |
 #AC3
-@TRN-1164 @wip
+@TRN-1164
   Scenario Outline: User can find any column name by typing on the "Quick Search" input box
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -76,7 +76,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
    #   | salesmanager |
       | storemanager |
 #AC4
-@TRN-1165 @wip
+@TRN-1165
   Scenario Outline: User can select the columns to be displayed by clicking the column name
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -89,7 +89,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
    #   | salesmanager |
       | storemanager |
 #AC5
-@TRN-1166 @wip
+@TRN-1166
   Scenario Outline: User can arrange the order of the columns (by dragging and dropping)
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -101,7 +101,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
     #  | salesmanager |
      # | storemanager |
 #AC6
-@TRN-1167 @wip
+@TRN-1167
   Scenario Outline: User can see all corresponding changes under the 'Fleet-Vehicles' page
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
