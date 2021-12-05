@@ -1,4 +1,4 @@
-@TRN-1139
+
 Feature:
 #*User Story :* 
 	#
@@ -15,6 +15,7 @@ Feature:
 	#4- User can see total recordings of vehicles
 	#
 	#5- User can download table data in XLS or CSV format from "Export Grid" (a confirmation message is enough to validate)
+  @TRN-1184 @TRN-1185 @TRN-1186 @TRN-1187 @TRN-1188
   Scenario Outline:
     Given the "<userType>" is on the Vehicles page
     When the user should see all vehicles information under module
