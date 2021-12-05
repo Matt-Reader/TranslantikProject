@@ -149,7 +149,8 @@ Feature:
 		    Examples:
 		      | userType     |
 		      | salesmanager |
-		      | storemanager |	
+		      | storemanager |
+
 
 	#*User Story :* 
 	#

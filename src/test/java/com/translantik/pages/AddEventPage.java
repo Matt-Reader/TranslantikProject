@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class AddEventPage {
+public class AddEventPage extends BasePage {
 
     @FindBy (css = "div[role='dialog']")
     public WebElement popUpPage;
