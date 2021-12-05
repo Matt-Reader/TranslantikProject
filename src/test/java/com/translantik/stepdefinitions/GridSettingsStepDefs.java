@@ -18,12 +18,6 @@ public class GridSettingsStepDefs {
     LoginPage loginPage = new LoginPage();
     GridSettingsPage gridSettingsPage = new GridSettingsPage();
 
-    @Given("the user logged in as {string}")
-    public void theUserLoggedInAsA(String userType) {
-        Driver.get().get(ConfigurationReader.get("url"));
-        loginPage.LoginAsUserTypes(userType);
-    }
-
     @When("the user navigates to Fleet, Vehicles")
     public void the_user_navigates_to_page() {
         gridSettingsPage.waitUntilLoaderScreenDisappear();
