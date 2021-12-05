@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ForgotPasswordPage extends BasePage {
-    public ForgotPasswordPage(){
+   /* public ForgotPasswordPage(){
         PageFactory.initElements(Driver.get(), this);
-    }
+    } */
 
     @FindBy(id="prependedInput")
     public WebElement userName;
