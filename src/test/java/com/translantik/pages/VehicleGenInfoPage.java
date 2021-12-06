@@ -46,17 +46,15 @@ public class VehicleGenInfoPage extends BasePage{
         return genInfosOnTheVehiclesPage;
     }
 
-    public void clickRandomRow(){
+/*    public void clickRandomRow(){
+
         Random rand = new Random();
-        int randomRowThreeDot= rand.nextInt(Driver.get().findElements(By.xpath("//td//div/a[@data-toggle='dropdown']")).size());
+        int randomRow= rand.nextInt(Driver.get().findElements(By.xpath("//tr//td[@data-column-label='Driver']")).size());
 
-        Actions actions = new Actions(Driver.get());
-        WebElement threeDot = Driver.get().findElement(By.xpath("(//td//div/a[@data-toggle='dropdown'])["+randomRowThreeDot+"]"));
+        WebElement randomRowWebELement = Driver.get().findElement(By.xpath("((//div//tbody/tr)["+randomRow+"]/td)[3]"));
 
-        actions.moveToElement(threeDot).build().perform();
-        BrowserUtils.waitFor(3);
-        BrowserUtils.clickWithJS(threeDot);
+        randomRowWebELement.click();
 
-    }
+    }*/
 
 }

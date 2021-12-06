@@ -29,12 +29,6 @@ public class VehicleGenInfoStepDefs {
         BrowserUtils.waitFor(1);
     }
 
-    @When("the user should land on General Information page")
-    public void theUserShouldLandOnGeneralInformationPage() {
-        vehicleGenInfoPage.clickRandomRow();
-    }
-
-
     @Then("verify the user should see Edit, Delete and Add Event buttons on the General Information page")
     public void verifyTheUserShouldSeeEditDeleteAndAddEventButtonsOnTheGeneralInformationPage() {
 
