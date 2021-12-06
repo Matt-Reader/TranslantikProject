@@ -29,7 +29,7 @@ public class VehicleGenInfoStepDefs {
 
     @When("the user should land on General Information page")
     public void theUserShouldLandOnGeneralInformationPage() {
-        vehiclesPage.clickRandomRow();
+        vehicleGenInfoPage.clickRandomRow();
     }
 
 
@@ -61,7 +61,7 @@ public class VehicleGenInfoStepDefs {
         Random rand = new Random();
         int randomRow= rand.nextInt(Driver.get().findElements(By.xpath("//tr//td[@data-column-label='Driver']")).size());
 
-        List<String> expectedRowValues = vehiclesPage.getInfoRowsList(randomRow);
+        List<String> expectedRowValues = vehicleGenInfoPage.getInfoRowsList(randomRow);
 
         for (String value : expectedRowValues) {
             if (value.contains(",")){
@@ -91,6 +91,13 @@ public class VehicleGenInfoStepDefs {
         Assert.assertTrue("Check all the info is the same in Vehicles and General Information Page",expectedRowValues.equals(actualValuesGenInfo));
 
         BrowserUtils.waitFor(3);
+
+
+
+    }
+    //TODO
+    @When("the user click any vehicle \\(row) under the Fleet-Vehicle module")
+    public void theUserClickAnyVehicleRowUnderTheFleetVehicleModule() {
 
 
 

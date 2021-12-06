@@ -18,6 +18,4 @@ public class vehicleStepDef {
         loginPage.LoginAsUserTypes(userType);
         dashboardPage.navigateToModule("Fleet", "Vehicles");
         dashboardPage.waitUntilLoaderScreenDisappear();
-
-
 }
