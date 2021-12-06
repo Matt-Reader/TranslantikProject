@@ -2,6 +2,7 @@ package com.translantik.pages;
 
 import com.translantik.utilities.BrowserUtils;
 import com.translantik.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,6 +29,34 @@ public class VehiclesPage extends BasePage {
     @FindBy(css = "a[title='Delete Car']")
     public WebElement generalInfoDltBtn;
 
+    @FindBy(xpath = "//label[contains(text(),'of')][1]")
+    public WebElement totalPageNumber;
+
+    @FindBy(css = ".fa-chevron-right.hide-text")
+    public WebElement nextButton;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement PageNumber;
+
+    @FindBy(css=".fa-chevron-left.hide-text")
+    public WebElement previousButton;
+
+    @FindBy(xpath = "//label[@class='dib'][3]")
+    public WebElement totalVehicleNumber;
+
+    @FindBy(css=".action.btn.mode-text-only.dropdown-toggle")
+    public WebElement exportGridButton;
+
+    @FindBy(xpath = "//a[@title='CSV']")
+    public WebElement CSVButton;
+
+    @FindBy(xpath = "//div[text()='Export started successfully. You will receive email notification upon completion.']")
+    public WebElement confirmMessage;
+
+
+
+
+
     public void hoverOnThreeDot (){
 
         Random rand = new Random();
@@ -40,6 +69,14 @@ public class VehiclesPage extends BasePage {
         BrowserUtils.waitFor(3);
         BrowserUtils.clickWithJS(threeDot);
     }
+
+    public void driverNameIsVisible(){
+        for (int i = 1; i <=25 ; i++) {
+    Assert.assertTrue(Driver.get().findElement(By.xpath("(//tbody/tr/td[@data-column-label='Driver'])[" + i + "]"))
+            .isDisplayed());
+        }
+    }
+
 
 
 

@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public abstract class  BasePage {
+    public BasePage() {
+        PageFactory.initElements(Driver.get(), this);
+    }
 
     @FindBy(css = "span.title-level-1")
     public List<WebElement> menuOptions;
@@ -36,9 +39,7 @@ public abstract class  BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
-    public BasePage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+
 
 
     /**

@@ -7,11 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.get(), this);
-    }
 
     @FindBy(id="prependedInput")
     public WebElement userName;
@@ -21,6 +18,9 @@ public class LoginPage {
 
     @FindBy(name = "_submit")
     public WebElement loginBTN;
+
+    @FindBy(id = "remember_me")
+    public WebElement rememberMeCheckBox;
 
 
     public void login(String userNameStr, String passwordStr) {
