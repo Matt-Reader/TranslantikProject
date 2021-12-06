@@ -59,12 +59,6 @@ public class VehicleGenInfoStepDefs {
 
         List<String> expectedRowValues = vehicleGenInfoPage.getInfoRowsList(randomRow);
 
-        for (String value : expectedRowValues) {
-            if (value.contains(",")){
-                value.replace(",","");
-            }
-        }
-
         WebElement randomRowElement = Driver.get().findElement(By.xpath("(//tr//td[@data-column-label='Driver'])["+randomRow+"]"));
 
         System.out.println("vehiclesPage.getInfoRowsList(5) = " + expectedRowValues);
