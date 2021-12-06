@@ -22,9 +22,10 @@ public class VehicleGenInfoStepDefs {
 
     @Then("the user can see the {string} page")
     public void theUserCanSeeThePage(String expectedTitle) {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitFor(2);
         String actualTitle = vehicleGenInfoPage.genInfoTextLink.getText();
         Assert.assertEquals("Verify user land on 'General Information' page",expectedTitle,actualTitle);
+        BrowserUtils.waitFor(1);
     }
 
     @When("the user should land on General Information page")
@@ -99,6 +100,15 @@ public class VehicleGenInfoStepDefs {
     @When("the user click any vehicle \\(row) under the Fleet-Vehicle module")
     public void theUserClickAnyVehicleRowUnderTheFleetVehicleModule() {
 
+        Driver.get().manage().window().maximize();
+        BrowserUtils.waitFor(1);
+
+        Random rand = new Random();
+        int randomRow= rand.nextInt(Driver.get().findElements(By.xpath("//tr//td[@data-column-label='Driver']")).size());
+
+        WebElement randomRowWebELement = Driver.get().findElement(By.xpath("((//div//tbody/tr)["+randomRow+"]/td)[3]"));
+
+        randomRowWebELement.click();
 
 
     }
