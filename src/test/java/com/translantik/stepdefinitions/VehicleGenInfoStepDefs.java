@@ -96,7 +96,7 @@ public class VehicleGenInfoStepDefs {
 
 
     }
-    //TODO
+
     @When("the user click any vehicle \\(row) under the Fleet-Vehicle module")
     public void theUserClickAnyVehicleRowUnderTheFleetVehicleModule() {
 
