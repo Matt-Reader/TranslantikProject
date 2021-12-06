@@ -29,7 +29,7 @@ public class FiltrerMenuStepDefs {
 
     @When("the user click the filter button")
     public void the_user_click_the_filter_button() {
-        //new FilterMenuPage().waitUntilLoaderScreenDisappear();
+         new FilterMenuPage().waitUntilLoaderScreenDisappear();
          WebDriverWait wait= new WebDriverWait(Driver.get(),5);
          wait.until(ExpectedConditions.elementToBeClickable(new FilterMenuPage().filterButton));
         //  BrowserUtils.hover(new FleetVehiclesPage().filterButton);
