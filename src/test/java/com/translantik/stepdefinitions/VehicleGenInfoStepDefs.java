@@ -55,7 +55,7 @@ public class VehicleGenInfoStepDefs {
         BrowserUtils.waitFor(1);
 
         Random rand = new Random();
-        int randomRow= rand.nextInt(Driver.get().findElements(By.xpath("//tr//td[@data-column-label='Driver']")).size());
+        int randomRow= rand.nextInt(Driver.get().findElements(By.xpath("//tr//td[@data-column-label='Driver']")).size()+1);
 
         List<String> expectedRowValues = vehicleGenInfoPage.getInfoRowsList(randomRow);
 
