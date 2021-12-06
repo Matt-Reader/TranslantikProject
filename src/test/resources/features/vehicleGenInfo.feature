@@ -24,7 +24,7 @@ Feature: As a user, I should be able to see the detailed information of a specif
   @TRN-1170
   Scenario Outline: Verify that all user can see the "General Information" page clicking on the "Eye (View)" icon at the end of each row, under the 'Fleet-Vehicle' module
     Given the "<userType>" is on the Vehicles page
-    When the user click any vehicle (row) under the Fleet-Vehicle module
+    When the user click any Eye (View) icon at the end of each row
     Then the user can see the "General Information" page
     Examples:
       | userType     |

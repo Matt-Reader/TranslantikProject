@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 
 import java.util.ArrayList;
@@ -109,6 +110,27 @@ public class VehicleGenInfoStepDefs {
         WebElement randomRowWebELement = Driver.get().findElement(By.xpath("((//div//tbody/tr)["+randomRow+"]/td)[3]"));
 
         randomRowWebELement.click();
+
+
+    }
+
+    @When("the user click any Eye \\(View) icon at the end of each row")
+    public void theUserClickAnyEyeViewIconAtTheEndOfEachRow() {
+
+        Driver.get().manage().window().maximize();
+        BrowserUtils.waitFor(1);
+
+        Random rand = new Random();
+        int randomRowThreeDot= rand.nextInt(Driver.get().findElements(By.xpath("//td//div/a[@data-toggle='dropdown']")).size());
+
+        Actions actions = new Actions(Driver.get());
+        WebElement threeDot = Driver.get().findElement(By.xpath("(//td//div/a[@data-toggle='dropdown'])["+randomRowThreeDot+"]"));
+
+        actions.moveToElement(threeDot).build().perform();
+        BrowserUtils.waitFor(1);
+        BrowserUtils.clickWithJS(threeDot);
+
+        BrowserUtils.clickWithJS(vehicleGenInfoPage.viewBTN);
 
 
     }

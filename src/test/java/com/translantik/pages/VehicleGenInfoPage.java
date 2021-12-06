@@ -27,6 +27,16 @@ public class VehicleGenInfoPage extends BasePage{
     @FindBy (css = "div.control-label")
     public List<WebElement> listOfGenInfo;
 
+    @FindBy(xpath = "//tbody//tr//td//div[@class='dropdown']")
+    List<WebElement> threeDotWebelements;
+
+    //give a random number
+    @FindBy (xpath = "(//tbody//tr//td//div[@class='dropdown'])[3]")
+    public WebElement randomThreeDotLocator;
+
+    @FindBy(css = "a[title='View']")
+    public WebElement viewBTN;
+
     public List<String> getInfoRowsList(int randomRowValue){
 
         List<WebElement> genInfoElements =Driver.get().findElements(By.xpath("(//div//tbody/tr)["+randomRowValue+"]/td"));
