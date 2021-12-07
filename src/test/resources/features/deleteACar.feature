@@ -28,8 +28,8 @@ Feature:
 		Examples:
 		     | userType     |
 		     | driver       |
-		     | salesmanager |
-		     | storemanager |	
+#		     | salesmanager |
+#		     | storemanager |
 
 	#*User Story :* 
 	#
@@ -59,8 +59,8 @@ Feature:
 		Examples:
 		    | userType     |
 		    | driver       |
-		    | salesmanager |
-		    | storemanager |
+#		    | salesmanager |
+#		    | storemanager |
 
 	#*User Story :* 
 	#
@@ -118,7 +118,7 @@ Feature:
 		   Examples:
 		      | userType     |
 		      | salesmanager |
-		      | storemanager |	
+#		      | storemanager |
 
 	#*User Story :* 
 	#
@@ -149,7 +149,7 @@ Feature:
 		    Examples:
 		      | userType     |
 		      | salesmanager |
-		      | storemanager |
+#		      | storemanager |
 
 
 	#*User Story :* 
@@ -180,4 +180,4 @@ Feature:
 		    Examples:
 		      | userType     |
 		      | salesmanager |
-		      | storemanager |
+#		      | storemanager |
