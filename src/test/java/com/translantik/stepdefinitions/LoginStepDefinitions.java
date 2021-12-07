@@ -66,7 +66,7 @@ public class LoginStepDefinitions {
     @Then("the subtitle contains {string}")
     public void the_subtitle_contains(String expectedSubTitle) {
 
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(3);
         System.out.println("expectedSubTitle = " + expectedSubTitle);
         String actualSubTitle = new DashboardPage().pageSubTitle.getText();
         System.out.println("actualSubTitle = " + actualSubTitle);
