@@ -15,15 +15,15 @@ Feature:Filter Menu
 	#{color:#172b4d}*4*- User can apply filters by typing the filter name, from the 'Manage Filters' menu.{color}
 	#{color:#172b4d}*5*- User can apply multiple filters at the same time{color}
 	#{color:#172b4d}*6*- User can remove all filters by clicking on the reset icon, under the 'Fleet-Vehicles' module{color}
-  @TRN-1210
+  @TRN-1210 @smoke
   Scenario Outline: 1.Manage filters should be hidden
     Given the "<userType>" is on the Vehicles page
     Then Manage filters should be hidden
     Examples:
       | userType     |
       | driver       |
-      | salesmanager |
-      | storemanager |
+#      | salesmanager |
+#      | storemanager |
 
 	#{color:#172b4d}*User Story :* {color}
 	#

@@ -33,7 +33,7 @@ Feature:As a store manager and sales manager, I should be able to add an event
       | driver   |
 
 
-  @TRN-1193
+  @TRN-1193 @smoke
   Scenario Outline: After clicking on "Add event" button, "Add Event" page should pop up.
     Given the "<userType>" is on the Vehicles page
     When the user should be able to click any vehicle
@@ -42,7 +42,7 @@ Feature:As a store manager and sales manager, I should be able to add an event
     Examples:
       | userType     |
       | salesmanager |
-      | storemanager |
+#      | storemanager |
 
   @TRN-1194
   Scenario Outline: User Should see Title, Owner, Organizer display name, Organizer email, Start Date, End Date as a compulsory field

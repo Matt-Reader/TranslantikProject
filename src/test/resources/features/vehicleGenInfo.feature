@@ -10,7 +10,7 @@ Feature: As a user, I should be able to see the detailed information of a specif
   # 5- Vehicle information displayed on the "General Information" page and "Fleet-Vehicle" page should be the same
 
   #AC1
-  @TRN-1169
+  @TRN-1169 @smoke
   Scenario Outline: Verify that all user can see the "General Information" page by clicking on any vehicle (row), under the 'Fleet-Vehicle' module
     Given the "<userType>" is on the Vehicles page
     When the user click any vehicle (row) under the Fleet-Vehicle module
@@ -19,8 +19,8 @@ Feature: As a user, I should be able to see the detailed information of a specif
     Examples:
       | userType     |
       | driver       |
-      | salesmanager |
-      | storemanager |
+#      | salesmanager |
+#      | storemanager |
 
   #AC2
   @TRN-1170

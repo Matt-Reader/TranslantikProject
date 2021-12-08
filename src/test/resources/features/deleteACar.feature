@@ -81,7 +81,7 @@ Feature:
 	#*5*- When 'Sales Manager' and 'Store Manager' go to the 'General Information' page by clicking on any vehicle/row, they can delete any vehicle by clicking on the 'Delete' button and the "Car deleted" message should be displayed.
 	#
 	#*6*-When 'Sales Manager' and 'Store Manager' delete a car, the corresponding car should also be removed from the Fleet-Vehicle page.
-	@TRN-1157
+	@TRN-1157 @smoke
 	Scenario: Verify that the user as a driver should not able to delete a car
 		Given the "driver" is on the Vehicles page
 		When the user hover on the three dots at the end each row

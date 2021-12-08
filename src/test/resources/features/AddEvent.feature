@@ -4,7 +4,7 @@ Feature:As a store manager and sales manager, I should be able to add an event
   Background:
     Given the "salesmanager" is on the Vehicles page
 
-  @TRN-1176
+  @TRN-1176 @smoke
   Scenario: User can access the "Add Event" page from the "General Information" page
   (by clicking on any vehicle/row under Fleet-Vehicle module)
     When the user should be able to click any vehicle

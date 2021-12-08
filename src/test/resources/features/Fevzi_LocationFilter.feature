@@ -38,7 +38,7 @@ Feature:User should be able to use Location Filter
 		And the user enters a specific keyword as "west"
 		Then the results should not contains the given keyword as "west"
 
-	@TRN-1205
+	@TRN-1205 @smoke
 	Scenario: When user selects the "Starts-with" method with a keyword, the results should start with the specified keyword
 		When the user clicks on the Starts With method
 		And the user enters a specific keyword as "we"

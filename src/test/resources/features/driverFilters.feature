@@ -5,7 +5,7 @@ Feature: Driver filter
     Given the "storemanager" is on the Vehicles page
     And the user navigates to "Fleet" "Vehicles"
 
-  @TRN-1228
+  @TRN-1228 @smoke
   Scenario: User can select "Driver" filter under 'Fleet-Vehicles' module
     And the user click on the filter button
     And the user click on manage filter button

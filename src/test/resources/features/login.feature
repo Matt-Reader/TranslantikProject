@@ -41,7 +41,7 @@ Feature: Users should be able to login
     Given the user tries to login with invalid credentials
     Then  the user sees error massage on the login page
 
-  @TRN-1222
+  @TRN-1222 @smoke
   Scenario: User should see the password in bullet signs by default
     Given the user on the login page
     Then the user sees password as default bullet in password box

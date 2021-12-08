@@ -44,7 +44,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | salesmanager |
       | storemanager |
 #AC3
-@TRN-1164
+@TRN-1164 @smoke
   Scenario Outline: User can find any column name by typing on the "Quick Search" input box
     Given the user logged in as "<userType>"
     When the user navigates to Fleet, Vehicles
@@ -74,7 +74,7 @@ Feature:  Arranging vehicle table columns via "grid settings" functionality
       | userType     |
       | driver       |
    #   | salesmanager |
-      | storemanager |
+#      | storemanager |
 #AC4
 @TRN-1165
   Scenario Outline: User can select the columns to be displayed by clicking the column name
